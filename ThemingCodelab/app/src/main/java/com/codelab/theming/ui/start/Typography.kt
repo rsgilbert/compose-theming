@@ -51,7 +51,7 @@ val JetnewsTypography = Typography(
         fontWeight = FontWeight.Medium
     ),
     button = TextStyle(
-        fontFamily = Montserrat,
+        fontFamily = Domine,
         fontWeight = FontWeight.SemiBold
     ),
     caption = TextStyle(
