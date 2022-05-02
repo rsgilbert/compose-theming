@@ -1,6 +1,7 @@
 package com.example.compose.rally
 
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import com.example.compose.rally.ui.components.RallyTopAppBar
@@ -16,6 +17,8 @@ class TopAppBarTest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
+    private val allScreens = RallyScreen.values().toList()
+
     @Test
     fun myTest() {
         composeTestRule.setContent {
@@ -29,7 +32,6 @@ class TopAppBarTest {
 
     @Test
     fun rallyTopAppBarTest_currentTabSelected() {
-        val allScreens = RallyScreen.values().toList()
         composeTestRule.setContent {
             RallyTopAppBar(
                 allScreens =allScreens,
@@ -45,7 +47,6 @@ class TopAppBarTest {
 
     @Test
     fun rallyTopAppBarTest_currentLabelExists() {
-        val allScreens = RallyScreen.values().toList()
         composeTestRule.setContent {
             RallyTopAppBar(
                 allScreens=allScreens,
@@ -63,6 +64,34 @@ class TopAppBarTest {
             .assert(hasParent(hasContentDescription(RallyScreen.Bills.name)))
 
         sleep(4000)
+    }
+
+    @Test
+    fun rallyTopAppBarTest_tabClickChangesSelection() {
+        // test that clicking on a different tab changes the currently selected tab
+
+        composeTestRule.setContent {
+            RallyApp()
+        }
+        composeTestRule.onRoot().printToLog("tabClick_before")
+
+        composeTestRule
+            .onNode(hasContentDescription("Overview"))
+            .assertIsSelected()
+
+        composeTestRule
+            .onNode(hasContentDescription("Bills"))
+            .performClick()
+
+        composeTestRule.onRoot().printToLog("tabClick_after_click")
+
+        composeTestRule
+            .onNode(hasContentDescription("Bills"))
+            .assertIsSelected()
+
+        composeTestRule
+            .onNode(hasContentDescription("Overview"))
+            .assertIsNotSelected()
     }
 }
 
