@@ -19,7 +19,7 @@
     <!-- To see how these attributes are used, please visit https://material.io/develop/android/theming/color/ -->
     <style name="Base.Theme.Sunflower" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/sunflower_green_100</item>
-        <item name="colorPrimaryVariant">@color/sunflower_green_200</item>
+        <item name="colorPrimaryVariant">#E30B0B</item>
         <item name="colorOnPrimary">@color/sunflower_black</item>
         <item name="colorPrimaryDark">@color/sunflower_gray_50_a600</item>
         <item name="colorOnSurface">@color/sunflower_white</item>
@@ -43,5 +43,6 @@
     <style name="TextAppearance.Sunflower.Toolbar.Text" parent="TextAppearance.MaterialComponents.Headline5" >
         <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
+
 
 </resources>
